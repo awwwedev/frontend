@@ -48,7 +48,7 @@ export default class App extends Vue {
 
   @Provide('imageBasePath')
   get imageBasePath(): string {
-    return this.useLocalApi ? '' : this.baseApiPath
+    return this.useLocalApi ? '' : process.env.VUE_APP_IMG_PATH
   }
 }
 
