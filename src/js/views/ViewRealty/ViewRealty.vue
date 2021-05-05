@@ -104,6 +104,8 @@
                         :area="object.area"
                         :title="object.name"
                         :price="object.price_per_metr"
+                        :discount="object.discount_sum"
+                        :total-price="object.price"
                         :img-path="object.img_path"
                         :id="object.id"
                     />

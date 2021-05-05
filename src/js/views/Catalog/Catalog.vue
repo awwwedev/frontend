@@ -45,6 +45,8 @@
                 :price="object.price_per_metr"
                 :img-path="imageBasePath + object.img_path"
                 :data-index="index"
+                :total-price="object.price"
+                :discount="object.discount_sum"
                 :id="object.id"
             />
           </transition-group>

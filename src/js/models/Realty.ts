@@ -24,6 +24,7 @@ export default class Realty extends BaseModel{
     furniture?: number
     renovation?: number
     restroom?: number
+    discount_sum?: number
     heating?: number
 
     equipments?: Array<Equipment>
