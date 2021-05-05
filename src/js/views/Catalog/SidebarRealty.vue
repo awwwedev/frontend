@@ -5,6 +5,7 @@
                      :id="realty.id"
                      :price="realty.price"
                      :area="realty.area"
+                     :discount="realty.discount_sum"
                      :description="realty.description" :name="realty.name" :img-path="imageBasePath + realty.img_path"
                      class="sidebar-realty__realty"
         />

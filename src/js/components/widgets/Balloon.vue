@@ -7,6 +7,7 @@
         :id="id"
         :img-path="imgPath"
         :price="price"
+        :discount="discount"
     />
   </div>
 
@@ -36,6 +37,8 @@ export default class Balloon extends Vue {
     price!: number
     @Prop({ required: true })
     id!: number
+    @Prop({ required: true })
+    discount!: number
 
     get balloonId (): string {
         return `yandex-map-balloon-${ this.id }`

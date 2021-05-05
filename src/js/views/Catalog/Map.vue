@@ -31,8 +31,9 @@
                  :img-path="imageBasePath + realtyItem.img_path"
                  :name="realtyItem.name"
                  :price="realtyItem.price"
+                 :discount="realtyItem.discount_sum"
                  :id="realtyItem.id"
-        ></Balloon>
+        />
 
       </ymap-marker>
     </yandex-map>

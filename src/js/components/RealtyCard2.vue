@@ -13,6 +13,11 @@
         Подробнее
       </button>
     </div>
+    <div v-if="discount" class="balloon__discount">
+      <span class="balloon__discount-corner"></span>
+      <span class="balloon__discount-old">{{ price + discount }}</span> <span
+        class="balloon__discount-new">{{ price }}</span> руб.
+    </div>
   </div>
 </template>
 
@@ -36,6 +41,8 @@ export default class RealtyCard2 extends Vue {
   price!: number
   @Prop({ required: true })
   id!: number
+  @Prop({ required: true })
+  discount!: number
 
   get descriptionValue (): string {
     return removeHtmlTags(this.description).slice(0, 165) + '...'
