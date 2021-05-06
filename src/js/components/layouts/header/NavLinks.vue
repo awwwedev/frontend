@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue, Watch} from "vue-property-decorator";
+import {Component, Prop, Vue, Watch} from "vue-property-decorator";
 import {mixinNavLinks} from "@/js/mixins/navLinks";
 import bus from "@/js/common/bus";
 import {Route} from "vue-router";
@@ -24,13 +24,16 @@ import {Route} from "vue-router";
     mixins: [mixinNavLinks],
 })
 export default class NavLinks extends Vue {
+  @Prop({ required: false, type: Boolean, default: false }) disableScroll!: boolean
+
     goToHome(): Promise <Route> {
         return this.$router.push({name: 'home'})
     }
 
   @Watch('$route', { immediate: true, deep: true })
   watchRoute (route: Route): void {
-    if (route) {
+
+    if (route && !this.disableScroll) {
      this.$nextTick(() => {
        const routeIsHome = this.$route.name === 'home'
        if (route.hash === '#news') {

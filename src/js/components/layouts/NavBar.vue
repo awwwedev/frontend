@@ -8,11 +8,11 @@
                         <span class="header__cross cross cross_md" @click="handleClose"></span>
                     </div>
                 </div>
-                <NavLinks class="nav-bar__links-list" @click="handleClose">
+                <NavLinks class="nav-bar__links-list" @click="handleClose" disable-scroll>
                     <template v-slot:link="{link}" >
-                        <router-link :to="{ name: link.routeName, hash: link.hash ? `#${link.hash}` : '' }" class="nav-bar__link">
+                        <span @click="onClickLink({ name: link.routeName, hash: link.hash ? `#${link.hash}` : '' })" class="nav-bar__link">
                             {{ link.displayName }}
-                        </router-link>
+                        </span>
                     </template>
                 </NavLinks>
             </div>
@@ -29,6 +29,7 @@ import logoImg from '@/assets/img/logo.png'
 import NavLinks from "@/js/components/layouts/header/NavLinks.vue";
 import Search from "@/js/components/layouts/header/Search.vue";
 import {mapGetters} from "vuex";
+import {Route} from "vue-router";
 
 @Component({
     components: {Search, NavLinks},
@@ -44,16 +45,7 @@ import {mapGetters} from "vuex";
 })
 export default class NavBar extends Vue {
     visible = false;
-
-    mounted(): void {
-        bus.$on('nav-bar-hide', () => {
-            this.hide();
-        });
-
-        bus.$on('nav-bar-show', () => {
-            this.show()
-        });
-    }
+  routeWatcher!: (route: Route) => void
 
     show(): void {
         this.visible = true
@@ -61,7 +53,50 @@ export default class NavBar extends Vue {
 
     hide(): void {
         this.visible = false
+
     }
+
+  goToHome(): Promise <Route> {
+    return this.$router.push({name: 'home'})
+  }
+
+  onClickLink(route: { name: string, hash: string }): void {
+      this.$router.push(route).then(() => {
+        if (route) {
+          this.$nextTick(() => {
+            const routeIsHome = this.$route.name === 'home'
+            if (route.hash === '#news') {
+              if (!routeIsHome) {
+                this.goToHome().then(() => {
+                  this.$nextTick(() => {
+                    bus.$emit('scroll-to-news')
+                  })
+                })
+              } else {
+                bus.$emit('scroll-to-news')
+              }
+            } else if (route.hash === '#about') {
+              if (!routeIsHome) {
+                this.goToHome()
+              } else {
+                bus.$emit('scroll-to-info')
+              }
+            } else if (route.hash === '#contacts') {
+              if (!routeIsHome) {
+                this.goToHome().then(() => {
+                  this.$nextTick(() => {
+                    bus.$emit('scroll-to-contacts')
+                  })
+                })
+              } else {
+                bus.$emit('scroll-to-contacts')
+              }
+            }
+          })
+        }
+
+      })
+  }
 
     handleClick(event: Event): void {
         const $body = $(this.$refs['nav-bar']);
@@ -74,6 +109,16 @@ export default class NavBar extends Vue {
     handleClose(): void {
         this.hide()
     }
+
+  mounted(): void {
+    bus.$on('nav-bar-hide', () => {
+      this.hide();
+    });
+
+    bus.$on('nav-bar-show', () => {
+      this.show()
+    });
+  }
 
     @Watch('visible')
     watchShow(val: boolean): void {
@@ -121,8 +166,9 @@ export default class NavBar extends Vue {
         display block
         margin 17px 0
         padding-bottom 3px
-        &.router-link-active
+        white-space nowrap
 
+        &.router-link-active
           border-bottom 3px solid mainColor
 
     &__body

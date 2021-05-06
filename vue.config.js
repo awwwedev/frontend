@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
-        ? process.env.VUE_APP_BASE
+        ? process.env.VUE_APP_PUBLIC
         : '/',
     transpileDependencies: ['vuex-module-decorators'],
     configureWebpack: {

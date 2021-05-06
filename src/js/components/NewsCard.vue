@@ -132,7 +132,7 @@ export default class NewsCard extends Vue {
       word-break break-all
 
       & span
-        margin-right 15px
+        margin 0 15px
 
       &_big
         margin 10px 10px

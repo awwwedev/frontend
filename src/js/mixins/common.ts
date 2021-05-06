@@ -18,7 +18,7 @@ export class ScrollTo extends Mixins() {
             }, {
                 duration: 2000,
             })
-        }, 500)
+        }, 100)
     }
 }
 

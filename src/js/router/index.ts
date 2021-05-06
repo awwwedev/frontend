@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.VUE_APP_PUBLIC,
+  base: process.env.VUE_APP_BASE,
   routes,
   scrollBehavior(from, to, savedPosition) {
     if (from.name === to.name) {
