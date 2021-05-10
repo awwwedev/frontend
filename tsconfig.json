@@ -21,6 +21,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@common": [
+        "src/git-modules/common/src/*"
       ]
     },
     "lib": [

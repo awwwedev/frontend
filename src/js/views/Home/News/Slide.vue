@@ -40,7 +40,7 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
 </script>
 
 <style scoped lang="stylus">
-    @import "../../../../stylus/colors.styl"
+    @import "../../../../git-modules/common/src/assets/stylus/colors.styl"
     .slide
         position relative
         font-size 1rem

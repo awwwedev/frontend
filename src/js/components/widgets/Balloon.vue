@@ -17,7 +17,7 @@
 import $ from 'jquery'
 import {Component, Prop, Ref, Vue} from 'vue-property-decorator'
 import bus from "@/js/common/bus";
-import RealtyCard2 from "@/js/components/RealtyCard2.vue";
+import RealtyCard2 from "@/git-modules/common/src/components/RealtyCard2.vue";
 
 @Component({
   components: {RealtyCard2}

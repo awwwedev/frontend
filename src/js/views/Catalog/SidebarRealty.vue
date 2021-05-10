@@ -15,7 +15,7 @@
 <script lang="ts">
 import {Component, Inject, Vue} from "vue-property-decorator";
 import {mapGetters} from "vuex";
-import RealtyCard2 from "@/js/components/RealtyCard2.vue";
+import RealtyCard2 from "@/git-modules/common/src/components/RealtyCard2.vue";
 
 @Component({
     components: {RealtyCard2},

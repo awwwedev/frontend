@@ -97,7 +97,8 @@ export default class Header extends Vue {
 </script>
 
 <style scoped lang="stylus">
-@import "../../../../stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
+
 
 .header
     font-size 20px

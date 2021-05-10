@@ -57,7 +57,8 @@ export default class Paginate extends Vue {
 </script>
 
 <style scoped lang="stylus">
-    @import "~@/stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
+
 
     .paginate
         display flex

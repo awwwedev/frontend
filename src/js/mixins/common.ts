@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import {Component, Mixins} from "vue-property-decorator";
 
-@Component
+@Component({})
 export class ScrollTo extends Mixins() {
     scrollTo(target: HTMLElement | number, offset = 0): void {
         setTimeout(() => {

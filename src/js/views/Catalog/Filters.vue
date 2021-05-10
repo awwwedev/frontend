@@ -290,7 +290,8 @@ export default class Filters extends Vue {
 </script>
 
 <style scoped lang="stylus">
-@import "~@/stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
+
 .btn
     &:first-child
         margin-right 5px

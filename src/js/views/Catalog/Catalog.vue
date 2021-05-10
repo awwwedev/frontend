@@ -16,16 +16,6 @@
           <a href="tel:+7(978)734-58-55" class="link">+7(978)734-58-55</a>
         </p>
       </div>
-<!--      <div class="catalog__types types text-center">
-        <span class="types__item">Офисы от собственника</span>
-        <span class="types__item">От 10 до 500 кв. м.</span>
-        <span class="types__item">От 650 руб. за кв. м.</span>
-        <span class="types__item">Свежий ремонт</span>
-        <span class="types__item">Кондиционер</span>
-        <span class="types__item">Круглосуточный доступ</span>
-        <span class="types__item">Развитая инфраструктура</span>
-        <span class="types__item">Охраняемая территория, видеонаблюдение</span>
-      </div>-->
       <div class="catalog__main-content" :class="{ 'catalog__main-content_with-realty':  !$onlyMap}">
           <LeftSideBar class="catalog__sidebar" :height="mapHeight" :open="isOpenedSidebar"
                        @close="isOpenedSidebar = false"/>
@@ -71,7 +61,7 @@ import {Component, Inject, Ref, Watch} from 'vue-property-decorator';
 import {getModule} from "vuex-module-decorators";
 import {mapGetters, mapMutations} from "vuex";
 import $ from "jquery";
-import Realty from "@/js/components/RealtyCard.vue";
+import Realty from "@/git-modules/common/src/components/RealtyCard.vue";
 import RealtyModel from "@/js/models/Realty";
 import imgTown from "@/assets/img/town.png";
 import Pagination from "@/js/components/widgets/Paginator.vue";
@@ -258,7 +248,9 @@ export default class Catalog extends ScrollTo {
 </script>
 
 <style scoped lang="stylus">
-@import "~@/stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
+
+
 .btn
   &-enter-active, &-leave-active
     transition transform ease-out .5s, opacity ease-out .5s

@@ -82,7 +82,7 @@ export default class Search extends Vue {
 </script>
 
 <style scoped lang="stylus">
-@import "~@/stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
 
 .search
     display flex

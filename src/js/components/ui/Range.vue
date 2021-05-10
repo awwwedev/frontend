@@ -287,8 +287,8 @@ export default class Range extends Vue {
 </script>
 
 <style scoped lang="stylus">
-@import "~@/stylus/colors.styl"
-@import "~@/stylus/mixins.styl"
+@import "~@common/assets/stylus/colors.styl"
+@import "~@common/assets/stylus/mixins.styl"
 
 .range
     position relative

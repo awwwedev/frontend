@@ -123,7 +123,8 @@ export default class PageHeader extends Mixins(ScrollTo) {
 </script>
 
 <style scoped lang="stylus">
-@import '~@/stylus/colors.styl'
+@import "~@common/assets/stylus/colors.styl"
+
 
 .page-header
   padding 150px 110px 0 110px

@@ -19,7 +19,8 @@ Vue.use(Vuelidate)
 Vue.use(VueMask);
 Vue.config.productionTip = false;
 
-Vue.component('ibg', () => import('@/js/components/common/Ibg.vue'));
+// @ts-ignore
+Vue.component('ibg', () => import('@common/components/common/Ibg.vue'));
 store.dispatch('init')
 
 

@@ -42,7 +42,7 @@ import Slick from "vue-slick";
 import {Component, Inject, Vue} from 'vue-property-decorator';
 import Link from "@/js/views/Home/Link.vue";
 import BigHeader from "@/js/components/BigHeader.vue";
-import Category from "@/js/components/Category.vue";
+import Category from "@/git-modules/common/src/components/Category.vue";
 import SliderNav from "@/js/components/SliderNav.vue";
 import RealtyType from "@/js/models/RealtyType";
 

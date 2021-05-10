@@ -26,7 +26,7 @@ import {Component, Prop, Vue} from 'vue-property-decorator';
 </script>
 
 <style lang="stylus" scoped>
-    @import "../../../stylus/colors.styl"
+    @import "../../../git-modules/common/src/assets/stylus/colors.styl"
 
     .link-wrapper
         display inline-block

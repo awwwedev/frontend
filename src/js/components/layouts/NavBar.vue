@@ -137,7 +137,7 @@ export default class NavBar extends Vue {
 </script>
 
 <style scoped lang="stylus">
-@import "~@/stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
 
 .nav-bar
     background-color rgba(0, 0, 0, .6)

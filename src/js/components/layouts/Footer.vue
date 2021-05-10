@@ -134,7 +134,7 @@ export default class Footer extends Mixins(ScrollTo) {
 </script>
 
 <style scoped lang="stylus">
-@import "../../../stylus/colors.styl"
+@import "../../../git-modules/common/src/assets/stylus/colors.styl"
 .footer
     position relative
     font-size .7rem

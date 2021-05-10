@@ -107,7 +107,7 @@ export default class Slider extends Vue {
 </script>
 
 <style scoped lang="stylus">
-@import "~@/stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
 
 .slider
   position relative

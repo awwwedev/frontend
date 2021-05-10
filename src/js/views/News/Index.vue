@@ -9,7 +9,7 @@
                     :content="newsItem.content"
                     :name="newsItem.header"
                     :img-path="imageBasePath + newsItem.photo"
-                    :key="idx"
+                    :key="idx + 'ghjkghjk'"
                     :data-index="idx"
                     @click="$router.push({ name: 'news.view', params: { id: newsItem.id } })"
           >
@@ -34,7 +34,7 @@ import {Component, Inject, Ref, Watch} from "vue-property-decorator";
 import News from "@/js/models/News";
 import Paginator from "@/js/common/helpers/Paginator";
 import PaginatorComponent from "@/js/components/widgets/Paginator.vue";
-import NewsCard from "@/js/components/NewsCard.vue";
+import NewsCard from "@/git-modules/common/src/components/NewsCard.vue";
 import $ from "jquery";
 import {ScrollTo} from "@/js/mixins/common";
 import {AxiosResponse} from "axios";

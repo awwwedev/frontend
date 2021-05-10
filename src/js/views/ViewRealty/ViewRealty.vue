@@ -118,7 +118,7 @@
 <script lang="ts">
 import { Component, Mixins, Ref } from "vue-property-decorator";
 import Slider from "./Slider.vue";
-import Object from "@/js/components/RealtyCard.vue";
+import Object from "@/git-modules/common/src/components/RealtyCard.vue";
 import Modal from "@/js/components/widgets/Modal.vue";
 import Realty from "@/js/models/Realty";
 import { requiredIf, required, email } from 'vuelidate/lib/validators'
@@ -235,7 +235,7 @@ export default class ViewObject extends Mixins<Validation>(validationMixin) {
 </script>
 
 <style scoped lang="stylus">
-@import "~@/stylus/colors.styl"
+@import "~@common/assets/stylus/colors.styl"
 
 .view-object
     &__nav
