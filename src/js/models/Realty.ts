@@ -17,16 +17,9 @@ export default class Realty extends BaseModel{
     latitude?: number
     longitude?: number
     price_per_metr?: number
-    photo?: Array<string>
-
-    access?: number
-    energy?: number
-    furniture?: number
-    renovation?: number
-    restroom?: number
     discount_sum?: number
-    heating?: number
 
+    photo?: Array<string>
     equipments?: Array<Equipment>
 
     static getMinMax() : Promise<AxiosResponse<realtyMinMaxInfo>> {
