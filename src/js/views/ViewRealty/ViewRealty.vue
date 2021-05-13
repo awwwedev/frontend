@@ -71,7 +71,7 @@
 import { Component, Mixins, Ref } from "vue-property-decorator";
 import Slider from "../../../git-modules/common/src/components/Slider.vue";
 import Object from "@/git-modules/common/src/components/RealtyCard.vue";
-import Modal from "@/js/components/widgets/Modal.vue";
+import Modal from "@/git-modules/common/src/components/Modal.vue";
 import Realty from "@/js/models/Realty";
 import { requiredIf, required, email } from 'vuelidate/lib/validators'
 import { validationMixin, Validation } from "vuelidate";
