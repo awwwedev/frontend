@@ -4,7 +4,7 @@
             v-for="(link, index) in links"
             :key="index"
         >
-            <slot name="link" :link="link">
+            <slot name="link" :link="link" :idx="index">
                 <router-link v-if="link.isLink" :to="{name: link.routeName}">
                     {{ link.displayName }}
                 </router-link>

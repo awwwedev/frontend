@@ -54,7 +54,9 @@ export default class Header extends Vue {
       if (!this.$refLinksContainer) return
 
       this.$nextTick(() => {
-        const $activeLink = this.$refLinksContainer.find('.router-link-active')
+        let $activeLink = this.$refLinksContainer.find('.router-link-active')
+
+        if (!$activeLink.length) $activeLink = this.$refLinksContainer.find('.nav__link').first()
 
         this.setUnderLineToLink($activeLink)
       })
@@ -160,4 +162,9 @@ export default class Header extends Vue {
         background-color mainColor
         transition width ease-out .3s
         margin-top 5px
+
+        @media (max-width 1200px) {
+          display none
+        }
+
 </style>

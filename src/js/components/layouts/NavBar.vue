@@ -1,6 +1,6 @@
 <template>
     <transition name="nav-bar" direction="1500">
-        <aside v-if="visible" class="nav-bar" @click="handleClick" ref="nav-bar">
+        <aside v-show="visible" class="nav-bar" @click="handleClick" ref="nav-bar">
             <div class="nav-bar__body" ref="body">
                 <div class="nav-bar__header header">
                     <div class="flex-wrapper flex-wrapper_J-SB">
@@ -9,8 +9,8 @@
                     </div>
                 </div>
                 <NavLinks class="nav-bar__links-list" @click="handleClose" disable-scroll>
-                    <template v-slot:link="{link}" >
-                        <span @click="onClickLink({ name: link.routeName, hash: link.hash ? `#${link.hash}` : '' })" class="nav-bar__link">
+                    <template v-slot:link="{link, idx}" >
+                        <span @click="onClickLink({ name: link.routeName, hash: link.hash ? `#${link.hash}` : '' }, idx)" class="nav-bar__link" :ref="`links-${idx}`">
                             {{ link.displayName }}
                         </span>
                     </template>
@@ -57,10 +57,10 @@ export default class NavBar extends Vue {
     }
 
   goToHome(): Promise <Route> {
-    return this.$router.push({name: 'home'})
+    return this.$router.push({name: 'home'}).catch(() => {}).then()
   }
 
-  onClickLink(route: { name: string, hash: string }): void {
+  onClickLink(route: { name: string, hash: string }, idx: number): void {
       this.$router.push(route).then(() => {
         if (route) {
           this.$nextTick(() => {
@@ -94,8 +94,9 @@ export default class NavBar extends Vue {
             }
           })
         }
-
-      })
+        $(this.$refs.body).find('.router-link-active').removeClass('router-link-active')
+        $(this.$refs[`links-${idx}`]).addClass('router-link-active')
+      }).catch(() => {})
   }
 
     handleClick(event: Event): void {
@@ -167,6 +168,7 @@ export default class NavBar extends Vue {
         margin 17px 0
         padding-bottom 3px
         white-space nowrap
+        cursor pointer
 
         &.router-link-active
           border-bottom 3px solid mainColor
