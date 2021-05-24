@@ -196,9 +196,9 @@ export default class Map extends Vue {
     })
   }
 
-  getRealty(options: { exceptedId: Array<number> }): Promise<AxiosResponse<Array<RealtyModel>>> {
+  getRealty(options: { exceptedId: Array<number> }): Promise<AxiosResponse<{ data: Array<RealtyModel> }>> {
     return RealtyModel.getListMap({...this.$filtersForMap, ...this.maxBounds, ...options}).then((response) => {
-      const realties = response.data
+      const realties = response.data.data
 
       getModule(CatalogModule, this.$store).setRealty([...realties, ...this.$realty])
       return response
