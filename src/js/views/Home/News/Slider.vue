@@ -4,7 +4,7 @@
       <Slide v-for="(news, index) in slides"
              :key="index + 123"
              :header="news.header"
-             :content="news.content"
+             :content="news.short_description"
              :photo="news.photo"
              :id="news.id"
       />

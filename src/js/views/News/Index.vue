@@ -7,7 +7,7 @@
                           @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
           <NewsCard class="" v-for="(newsItem, idx ) in news"
                     v-if="news.length"
-                    :content="newsItem.content"
+                    :content="newsItem.short_description"
                     :name="newsItem.header"
                     :img-path="imageBasePath + newsItem.photo"
                     :key="idx + 'ghjkghjk'"
@@ -94,7 +94,7 @@ export default class IndexNews extends ScrollTo {
   }
 
   get metaDesc(): string {
-    return (this.news[0] || { header: 'Самые актальные новости технопарка' }).header as string
+    return 'Самые актальные новости технопарка'
   }
 
   onEnter(el: HTMLElement, done: () => void): void {

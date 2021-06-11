@@ -7,6 +7,7 @@ class News {
     photo?: string;
     header?: string;
     content?: string;
+    short_description?: string;
     id?: number;
 
     static getList(options: { page: number, [key: string]: string | number } = { page: 1 }): Promise<AxiosResponse<Paginator<News>>> {
