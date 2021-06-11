@@ -12,6 +12,7 @@ export default class Realty extends BaseModel{
     name?: string
     description?: string
     realtyTypeName?: string
+    short_description?: string
     price?: number
     area?: number
     latitude?: number
@@ -41,12 +42,12 @@ export default class Realty extends BaseModel{
             })
         }
     }
-    static getListMap(params: { [key: string]: number | string | undefined | Array<number> } = {}): Promise<AxiosResponse<{ data: Array<Realty> }>> {
+    static getListMap(params: { [key: string]: number | string | undefined | Array<number> } = {}): Promise<AxiosResponse<Array<Realty>>> {
         if (process.env.VUE_APP_USE_LOCAL_API === 'false') {
-            return http.get<{ data: Array<Realty> }>('realty/map', { params: params })
+            return http.get<Array<Realty>>('realty/map', { params: params })
         } else {
-            return new Promise<AxiosResponse<{ data: Array<Realty> }>>((resolve) => {
-                resolve({ data: { data: api.realty } } as AxiosResponse<{ data: Array<Realty> }>)
+            return new Promise<AxiosResponse<Array<Realty>>>((resolve) => {
+                resolve({ data: api.realty } as AxiosResponse<Array<Realty>>)
             })
         }
     }

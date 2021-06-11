@@ -86,8 +86,10 @@ import Paginator from "@/js/common/helpers/Paginator";
     imgTown,
     bus
   }),
-  metaInfo: {
-    title: 'Аренда помещений Севастополь',
+  metaInfo() {
+    return {
+      title: `Наш ассортимент недвижимости`,
+    }
   },
   computed: {
     ...mapGetters('common', {

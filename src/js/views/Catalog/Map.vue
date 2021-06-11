@@ -27,7 +27,7 @@
       >
         <Balloon slot="balloon"
                  :area="realtyItem.area"
-                 :description="realtyItem.description"
+                 :description="realtyItem.short_description"
                  :img-path="imageBasePath + realtyItem.img_path"
                  :name="realtyItem.name"
                  :price="realtyItem.price"
@@ -196,9 +196,9 @@ export default class Map extends Vue {
     })
   }
 
-  getRealty(options: { exceptedId: Array<number> }): Promise<AxiosResponse<{ data: Array<RealtyModel> }>> {
+  getRealty(options: { exceptedId: Array<number> }): Promise<AxiosResponse<Array<RealtyModel>>> {
     return RealtyModel.getListMap({...this.$filtersForMap, ...this.maxBounds, ...options}).then((response) => {
-      const realties = response.data.data
+      const realties = response.data
 
       getModule(CatalogModule, this.$store).setRealty([...realties, ...this.$realty])
       return response

@@ -195,7 +195,7 @@ export default class ViewObject extends Mixins<Validation>(validationMixin) {
     })
     Realty.get({id: this.$route.params.id as unknown as number}).then(({data}) => {
       this.viewRealty = data
-      this.metaDesc = data.description as string
+      this.metaDesc = data.short_description as string
       this.metaRealtyTypeName = (data.realtyTypeName as string || '').toLocaleLowerCase()
       this.metaKeyWords = this.makeKeywords()
     })

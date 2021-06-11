@@ -119,6 +119,26 @@ import Equipment from "@/js/models/Equipment";
             $setQueryParams: 'setQueryParams',
             $saveFiltersInUrl: 'saveInUrl',
         })
+    },
+    metaInfo() {
+        return {
+            meta: [
+                {
+                    vmid: 'description',
+                    name: 'description',
+                    // @ts-ignore
+                    content: `Настройте параметры поиска по желаемым результатам и изучайте каталог предложений с фотографиями.
+          Меняйте стоимость, метраж, планировку, назначение и другие параметры – находите самое лучшее
+          помещение!`,
+                },
+                {
+                    vmid: 'keywords',
+                    name: 'keywords',
+                    // @ts-ignore
+                    content: `аренда, недвижимость, севастополь, аренда помещений, аренда недвижимости, помещения, коммерческая недвижимость${this.metaKeyWords}`,
+                }
+            ]
+        }
     }
 })
 export default class Filters extends Vue {
@@ -149,6 +169,10 @@ export default class Filters extends Vue {
     @Ref('container') refContainer!: HTMLElement
 
     $saveFiltersInUrl!: () => void
+
+    get metaKeyWords(): string {
+        return this.realtyTypes.map(type => type.name?.toLowerCase()).join(', ')
+    }
 
     @Emit('filter')
     onFilter(): void {
