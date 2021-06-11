@@ -2,7 +2,7 @@
   <div class="categories" ref="categories">
     <div class="container">
       <div class="categories__header" >
-        <Link text="Смотреть все предложения" class="categories__link" v-animate-to-on-scroll:left/>
+        <Link text="Смотреть все предложения" class="categories__link" v-animate-to-on-scroll:left :to="{ name: 'catalog' }"/>
         <h1 class="categories__title" >
           <span class="categories__title-part-1" v-animate-to-on-scroll:top>Аренда</span>
           <span class="categories__title-part-2" v-animate-to-on-scroll:right="100">площадей и помещений</span>

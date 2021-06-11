@@ -79,18 +79,18 @@ export default class Header extends Vue {
 
     @Watch('$route', { immediate: true })
     watchRoute (route: Route): void {
-      if (route) {
+      if (route && route.name) {
         if (route.name && route.name.includes('news')) {
           this.$nextTick(() => {
             // @ts-ignore
             this.setUnderLineToLink($(this.$refs['linknews'].$el as HTMLElement))
           })
-        } if (route.name && route.name.includes('Realty')) {
+        } if (route.name && route.name.includes('catalog')) {
           this.$nextTick(() => {
             // @ts-ignore
             this.setUnderLineToLink($(this.$refs['linkcatalog'].$el as HTMLElement))
           })
-        } else {
+        } else if (route.name === 'home') {
           this.updateUnderLineState()
         }
       }

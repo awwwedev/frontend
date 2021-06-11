@@ -1,5 +1,6 @@
 <template>
   <div class="news" ref="news">
+    <h1 class="news__title text-center">Новости технопарка</h1>
     <div class="news__container container">
         <transition-group class="news__grid" tag="div" name="news"
                           :css="false"
@@ -40,8 +41,27 @@ import {ScrollTo} from "@/js/mixins/common";
 import {AxiosResponse} from "axios";
 import Preloader from "@/js/components/widgets/Preloader.vue";
 
+
 @Component({
-  components: {Preloader, NewsCard, Paginator: PaginatorComponent}
+  components: {Preloader, NewsCard, Paginator: PaginatorComponent},
+  metaInfo() {
+    return {
+      title: 'Новости',
+      meta: [
+        {
+          vmid: 'description',
+          name: 'description',
+          // @ts-ignore
+          content: `${this.metaDesc}`,
+        },
+        {
+          vmid: 'keywords',
+          name: 'keywords',
+          content: `новости, события, технопарк маяк, ассоциация технопарк маяк`,
+        }
+      ]
+    }
+  }
 })
 export default class IndexNews extends ScrollTo {
   news = [] as Array<News>
@@ -55,7 +75,7 @@ export default class IndexNews extends ScrollTo {
   updateList (): Promise<AxiosResponse<Paginator<News>>> {
     this.inRequestState = true
 
-    return News.getList({ page: this.paginator.currentPage, perPage: 6 })
+    return News.getList({ page: this.paginator.currentPage, perPage: 6, sortType: 'DESC', sortField: 'created_at' })
         .then(response => {
           Paginator.initPaginator(response.data)
 
@@ -71,6 +91,10 @@ export default class IndexNews extends ScrollTo {
 
   onBeforeEnter(el: HTMLElement): void {
     $(el).css('opacity', 0)
+  }
+
+  get metaDesc(): string {
+    return (this.news[0] || { header: 'Самые актальные новости технопарка' }).header as string
   }
 
   onEnter(el: HTMLElement, done: () => void): void {
@@ -125,6 +149,19 @@ export default class IndexNews extends ScrollTo {
     width 100%
 .news
   margin-bottom 50px
+
+  &__title
+    margin-bottom 150px
+    margin-top 50px
+    font-size 2rem
+
+    @media (max-width 1000px)
+      margin-bottom 100px
+      margin-top 25px
+
+     @media (max-width 650px)
+       margin-bottom 50px
+       margin-top 25px
 
   &__grid
     display grid

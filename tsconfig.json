@@ -12,11 +12,9 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "typeRoots": [
-      "./src/types"
-    ],
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "jest"
     ],
     "paths": {
       "@/*": [
@@ -40,7 +38,7 @@
     "src/**/*.styl",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "src/**/*.json"
+    "node_modules/@types/jest/index.d.ts"
   ],
   "exclude": [
     "node_modules"
