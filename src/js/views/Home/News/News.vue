@@ -28,7 +28,7 @@ import {ScrollTo} from "@/js/mixins/common";
 export default class News extends Mixins(ScrollTo) {
   created(): void {
     bus.$on('scroll-to-news', () => {
-      this.scrollTo(this.$refs['news'] as HTMLElement, -100)
+      this.scrollTo(this.$refs['news'] as HTMLElement, 200)
     })
   }
 

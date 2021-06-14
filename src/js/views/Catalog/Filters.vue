@@ -135,7 +135,7 @@ import Equipment from "@/js/models/Equipment";
                     vmid: 'keywords',
                     name: 'keywords',
                     // @ts-ignore
-                    content: `аренда, недвижимость, севастополь, аренда помещений, аренда недвижимости, помещения, коммерческая недвижимость${this.metaKeyWords}`,
+                    content: `аренда, недвижимость, севастополь, аренда помещений, аренда недвижимости, помещения, коммерческая недвижимость, ${this.metaKeyWords}`,
                 }
             ]
         }

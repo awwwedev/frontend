@@ -29,7 +29,7 @@ import Search from "@/js/components/layouts/header/Search.vue";
 import {mapGetters} from "vuex";
 import $ from "jquery";
 import JQuery from "jquery";
-import {Route} from "vue-router";
+
 
 @Component({
     components: {Search, NavLinks, Burger},
@@ -62,38 +62,51 @@ export default class Header extends Vue {
       })
     }
     setUnderLineToLink ($link: JQuery): void {
-      this.$refUnderLine.animate({
-        left: $link.offset()?.left,
-        width: $link.width()
-      })
+        setTimeout(() => {
+            this.$refUnderLine.stop().animate({
+                left: $link.offset()?.left,
+                width: $link.width()
+            })
+        }, 100)
     }
-
     handleShowMenu(): void {
         bus.$emit('nav-bar-show')
     }
+    setUnderLine(): void {
+        const route = this.$route
 
+        if (route && route.name) {
+            if (route.name && route.name.includes('news')) {
+                this.$nextTick(() => {
+                    // @ts-ignore
+                    this.setUnderLineToLink($(this.$refs['linknews'].$el as HTMLElement))
+                })
+            } if (route.name && route.name.includes('catalog')) {
+                this.$nextTick(() => {
+                    // @ts-ignore
+                    this.setUnderLineToLink($(this.$refs['linkcatalog'].$el as HTMLElement))
+                })
+            } else if (route.name === 'home') {
+                this.updateUnderLineState()
+            }
+        }
+
+    }
+
+    created(): void {
+        addEventListener('resize', this.setUnderLine)
+    }
     mounted (): void {
       this.$refUnderLine = $(this.refUnderLine)
       this.$refLinksContainer = $(this.refLinksContainer)
     }
+    beforeDestroy(): void {
+        removeEventListener('resize', this.setUnderLine)
+    }
 
     @Watch('$route', { immediate: true })
-    watchRoute (route: Route): void {
-      if (route && route.name) {
-        if (route.name && route.name.includes('news')) {
-          this.$nextTick(() => {
-            // @ts-ignore
-            this.setUnderLineToLink($(this.$refs['linknews'].$el as HTMLElement))
-          })
-        } if (route.name && route.name.includes('catalog')) {
-          this.$nextTick(() => {
-            // @ts-ignore
-            this.setUnderLineToLink($(this.$refs['linkcatalog'].$el as HTMLElement))
-          })
-        } else if (route.name === 'home') {
-          this.updateUnderLineState()
-        }
-      }
+    watchRoute (): void {
+        this.setUnderLine()
     }
 }
 </script>

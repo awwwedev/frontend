@@ -33,7 +33,7 @@ export default class Realty extends BaseModel{
         }
     }
 
-    static getList(params: { [key: string]: number | string | undefined } = {}): Promise<AxiosResponse<Paginator<Realty>>> {
+    static getList(params: { [key: string]: number | boolean | string | undefined } = {}): Promise<AxiosResponse<Paginator<Realty>>> {
         if (process.env.VUE_APP_USE_LOCAL_API === 'false') {
             return http.get<Paginator<Realty>>('realty', { params: params })
         } else {
@@ -42,7 +42,7 @@ export default class Realty extends BaseModel{
             })
         }
     }
-    static getListMap(params: { [key: string]: number | string | undefined | Array<number> } = {}): Promise<AxiosResponse<Array<Realty>>> {
+    static getListMap(params: { [key: string]: number | boolean | string | undefined | Array<number> } = {}): Promise<AxiosResponse<Array<Realty>>> {
         if (process.env.VUE_APP_USE_LOCAL_API === 'false') {
             return http.get<Array<Realty>>('realty/map', { params: params })
         } else {

@@ -42,7 +42,7 @@ export default class Slider extends Vue {
   slides: Array<News> = [];
 
   mounted(): void {
-    News.getList().then(({data}) => {
+    News.getList({ page: 1, perPage: 10 }).then(({data}) => {
       this.slides = data.data
     })
   }

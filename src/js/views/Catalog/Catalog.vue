@@ -88,7 +88,7 @@ import Paginator from "@/js/common/helpers/Paginator";
   }),
   metaInfo() {
     return {
-      title: `Наш ассортимент недвижимости`,
+      title: `Недвижимость`,
     }
   },
   computed: {
@@ -205,7 +205,7 @@ export default class Catalog extends ScrollTo {
   getRealty(options: { page?: number } = {}): Promise<AxiosResponse<Paginator<RealtyModel>>> {
     this.inRequestState = true
 
-    return RealtyModel.getList({...this.$filtersForDefault, ...options, perPage: 12}).then((response) => {
+    return RealtyModel.getList({...this.$filtersForDefault, ...options, perPage: 12, is_published: true}).then((response) => {
       const paginator = response.data
       Paginator.initPaginator(paginator)
 

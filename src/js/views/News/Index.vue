@@ -12,7 +12,7 @@
                     :img-path="imageBasePath + newsItem.photo"
                     :key="idx + 'ghjkghjk'"
                     :data-index="idx"
-                    @click="$router.push({ name: 'news.view', params: { id: newsItem.id } })"
+                    :id="newsItem.id"
           >
             {{ newsItem.content }}
           </NewsCard>
@@ -57,7 +57,7 @@ import Preloader from "@/js/components/widgets/Preloader.vue";
         {
           vmid: 'keywords',
           name: 'keywords',
-          content: `новости, события, технопарк маяк, ассоциация технопарк маяк`,
+          content: `новости, события, технопарк маяк, ассоциация технопарк маяк, севастополь`,
         }
       ]
     }

@@ -7,7 +7,7 @@
                 <p class="slide__text" v-html="content"></p>
             </div>
         </div>
-      <router-link class="slide__link" :to="{ name: 'news.view', params: { id } }"/>
+        <router-link class="slide__link" :to="{ name: 'news.view', params: { id } }">{{ header }}</router-link>
     </div>
 </template>
 
@@ -55,6 +55,7 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
           left 0
           height 100%
           width 100%
+          color rgba(0, 0, 0, 0)
 
         &__flex-wrapper
             margin 0 45px

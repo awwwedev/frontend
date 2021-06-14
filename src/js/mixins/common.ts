@@ -18,7 +18,13 @@ export class ScrollTo extends Mixins() {
             }, {
                 duration: 2000,
             })
-        }, 100)
+
+            const stopAnimate = () => {
+                $animateTarget.stop()
+                removeEventListener('mousewheel', stopAnimate)
+            }
+            addEventListener('mousewheel', stopAnimate)
+        }, 400)
     }
 }
 

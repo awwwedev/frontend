@@ -24,6 +24,23 @@ import {Component, Inject, Vue} from "vue-property-decorator";
 import News from "@/js/models/News";
 
 @Component({
+  data: () => ({
+    news: {name: ''}
+  }),
+  metaInfo() {
+    return {
+      // @ts-ignore
+      title: this.news.header,
+      meta: [
+        {
+          vmid: 'description',
+          name: 'description',
+          // @ts-ignore
+          content: `${this.news.short_description}`,
+        }
+      ]
+    }
+  }
 
 })
 export default class ViewNews extends Vue{
@@ -46,9 +63,6 @@ export default class ViewNews extends Vue{
 
   &__item
     display inline
-
-
-
 
   &__divider
     margin 0 5px

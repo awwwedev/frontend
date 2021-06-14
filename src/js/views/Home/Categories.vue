@@ -20,7 +20,7 @@
                     :id="category.id"
                     :img-path="imageBasePath + category.img_path"
                     :name="category.name"
-                    @click="onClickCategory(category)"
+                    @click="onClickCategory"
           />
         </Slick>
         <div class="categories__slider-nav-wrapper">
@@ -93,11 +93,8 @@ export default class Categories extends Vue {
     this.$refs['slick'].prev()
   }
 
-  onClickCategory(category: RealtyType): void {
-    this.$router.replace({ name: 'catalog', query: { filters: JSON.stringify({ types: [ category.id ] }) } })
-        .then(() => {
-      this.$store.commit('queryParams/init')
-    })
+  onClickCategory(): void {
+    this.$store.commit('queryParams/init')
   }
 
   created (): void {
