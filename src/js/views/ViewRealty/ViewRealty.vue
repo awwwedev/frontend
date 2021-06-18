@@ -156,11 +156,11 @@ export default class ViewObject extends Mixins<Validation>(validationMixin) {
 
   onSubmit(): void {
     if (!this.$v.$invalid) {
-      http.post('mail', {
+      http.post('request', {
         ...this.formModels,
         realtyId: this?.viewRealty?.id
       }).then(res => {
-        this.refNotification.show('Заявка на аренду', res.data.result)
+        this.refNotification.show('Заявка на аренду', 'Успешно создана')
         this.onClose()
       })
     }
