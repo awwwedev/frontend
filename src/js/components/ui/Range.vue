@@ -275,13 +275,6 @@ export default class Range extends Vue {
 
         this.changed(min, max)
     }
-  @Watch('mib')
-  @Watch('max')
-    watchMinMax ():void {
-      setTimeout(() => {
-        this.updateInfoPosition()
-      }, 0)
-    }
 }
 
 </script>

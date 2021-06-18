@@ -15,9 +15,9 @@
         ref="map"
     >
       <ymap-marker
-          v-for="(realtyItem, idx) in $realty"
-          :key="idx"
-          :marker-id="idx"
+          v-for="realtyItem in $realty"
+          :key="realtyItem.id"
+          :marker-id="realtyItem.id"
           :coords="[realtyItem.latitude, realtyItem.longitude]"
           :balloon="{header: 'header', body: 'body', footer: 'footer'}"
           :icon="{layout: 'islands#32a1d0HomeIcon'}"
@@ -25,16 +25,17 @@
           @balloonopen="bus.$emit('yandex-map::open-balloon-' + realtyItem.id)"
           @balloonclose="bus.$emit('yandex-map::close-balloon-' + realtyItem.id)"
       >
-        <Balloon slot="balloon"
-                 :area="realtyItem.area"
-                 :description="realtyItem.short_description"
-                 :img-path="imageBasePath + realtyItem.img_path"
-                 :name="realtyItem.name"
-                 :price="realtyItem.price"
-                 :discount="realtyItem.discount_sum"
-                 :id="realtyItem.id"
-        />
-
+        <template slot="balloon">
+          <Balloon
+            :area="realtyItem.area"
+            :description="realtyItem.short_description"
+            :img-path="imageBasePath + realtyItem.img_path"
+            :name="realtyItem.name"
+            :price="realtyItem.price"
+            :discount="realtyItem.discount_sum"
+            :id="realtyItem.id"
+          />
+        </template>
       </ymap-marker>
     </yandex-map>
     <div v-else
@@ -93,10 +94,6 @@ import {minMax, objectWIthAnyProperties} from "@/js/common/types";
   }
 })
 export default class Map extends Vue {
-  get mapHeight(): number {
-    return window.innerHeight - 165
-  }
-
   $realty!: Array<RealtyModel>
   $onlyMap!: boolean
   $queryParams!: objectWIthAnyProperties
@@ -113,15 +110,16 @@ export default class Map extends Vue {
     latitudeMin: 10000000,
     longitudeMin: 0,
   }
-
   $saveFiltersInUrl!: () => void
-
   get exceptedId(): Array<number> {
     return this.$realty.reduce((acc, realty) => {
       acc.push(realty.id as number)
 
       return acc
     }, [] as Array<number>)
+  }
+  get mapHeight(): number {
+    return window.innerHeight - 165
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -197,8 +195,11 @@ export default class Map extends Vue {
   }
 
   getRealty(options: { exceptedId: Array<number> }): Promise<AxiosResponse<Array<RealtyModel>>> {
+
+
     return RealtyModel.getListMap({...this.$filtersForMap, ...this.maxBounds, ...options, is_published: true}).then((response) => {
-      const realties = response.data
+      // @ts-ignore
+      const realties = response.data.data
 
       getModule(CatalogModule, this.$store).setRealty([...realties, ...this.$realty])
       return response
@@ -240,7 +241,7 @@ export default class Map extends Vue {
   cursor pointer
   &__bg
     filter blur(1px)
-    background-image url("/img/map-placeholder.png")
+    background-image url("~@img/map-placeholder.png")
     background-position center
     background-size cover
     height 200px

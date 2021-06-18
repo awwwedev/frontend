@@ -10,7 +10,9 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
-                "@common": path.resolve(__dirname, 'src/git-modules/common/src')
+                "@common": path.resolve(__dirname, 'src/git-modules/common/src'),
+                "@img": path.resolve(__dirname, 'src/assets/img'),
+
             }
         }
     }

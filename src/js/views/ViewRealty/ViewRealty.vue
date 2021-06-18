@@ -52,7 +52,7 @@
                 :view-realty="viewRealty"
                 @openRentModal="openRentModal"
     >
-      <div class="view-object__offers offers">
+      <div class="view-object__offers offers" v-if="false">
         <h2 class="offers__title">Интересные предложения</h2>
         <div class="offers__body">
           <Object

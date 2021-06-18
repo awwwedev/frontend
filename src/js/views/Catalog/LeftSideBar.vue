@@ -9,7 +9,7 @@
                 </div>
                 <transition name="type" mode="out-in" @after-enter="onAfterEnter">
                     <SidebarRealty v-if="showRealty"/>
-                    <Filters v-else class="filters" ref="filters" @filter="$emit('filter')"/>
+                    <Filters v-else class="filters" :is-show="open || $windowWidth >= 800" ref="filters" @filter="$emit('filter')"/>
                 </transition>
             </div>
         </div>
@@ -22,6 +22,7 @@ import Filters from "./Filters.vue";
 import SidebarRealty from "@/js/views/Catalog/SidebarRealty.vue";
 import {mapGetters} from "vuex";
 import $ from "jquery";
+
 
 @Component({
     computed: {
@@ -44,7 +45,6 @@ export default class LeftSideBar extends Vue {
     emitClose(): void {
         return
     }
-
 
     onAfterEnter(): void {
         if (!this.showRealty) {
