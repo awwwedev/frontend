@@ -80,7 +80,6 @@ import LeftSideBar from "@/js/views/Catalog/LeftSideBar.vue";
 import Map from "@/js/views/Catalog/Map.vue";
 import {AxiosResponse} from "axios";
 import Paginator from "@/js/common/helpers/Paginator";
-import CatalogQueryParams from "@/js/store/modules/catalogQueryParams";
 
 
 @Component({
