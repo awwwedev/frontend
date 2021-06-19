@@ -154,12 +154,10 @@ export default class Catalog extends ScrollTo {
     })
   }
   closeSidebar(): void {
-    getModule(CatalogQueryParams, this.$store).saveInUrl()
     this.isOpenedSidebar = false
   }
 
   onOpenFilters(): void {
-    getModule(CatalogQueryParams, this.$store).init()
     this.isOpenedSidebar = true
   }
   onBeforeEnter(el: HTMLElement): void {
