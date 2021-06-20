@@ -16,6 +16,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
+          git submodule update --remote --recursice --init
           npm run build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
