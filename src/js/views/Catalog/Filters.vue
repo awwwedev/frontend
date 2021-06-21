@@ -128,6 +128,7 @@
   import Preloader from "@/js/components/widgets/Preloader.vue";
   import {getModule} from "vuex-module-decorators";
   import Catalog from "@/js/store/modules/catalog";
+  import CatalogQueryParams from "@/js/store/modules/catalogQueryParams";
 
 
   @Component({
@@ -277,6 +278,9 @@
       }
 
       addEventListener('resize', this.onResize)
+    }
+    activated(): void {
+      getModule(CatalogQueryParams, this.$store).init()
     }
 
     beforeDestroy(): void {

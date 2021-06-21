@@ -1,8 +1,10 @@
 <template>
     <div class="slide">
         <div class="slide__body">
+          <div class="slide__body-text-container">
             <h1 class="slide__title">{{ header }}</h1>
             <p class="slide__text">{{ content }}</p>
+          </div>
             <div class="slide__learn-more learn-more">
               Узнать подробнее
                 <span class="learn-more__arrow"></span>
@@ -50,8 +52,13 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
             font-size 20px
 
         &__body
+            display flex
+            flex-direction column
             max-width 886px
-            margin-right 15px
+            margin-right 150px
+            margin-left auto
+            justify-content space-between
+
             @media (max-width 900px)
                 width 100%
 
@@ -68,6 +75,7 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
             font-size .57em
             margin-right 10px
             margin-bottom 80px
+
             @media (max-width 1460px)
                 margin-left 0
 
@@ -76,7 +84,6 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
             width 552px
             height 812px
             margin-top -330px
-            margin-left auto
             z-index 2
 
             @media (max-width 1460px)
@@ -101,7 +108,7 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
         position relative
         display flex
         align-items center
-        margin-bottom 96px
+        margin-bottom 150px
         word-spacing 5px
         font-size 18px
 

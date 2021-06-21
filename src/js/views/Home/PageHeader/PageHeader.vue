@@ -89,7 +89,7 @@ export default class PageHeader extends Mixins(ScrollTo) {
       } else {
         this.currentSlideIndex++
       }
-    }, 5000)
+    }, 50000)
   }
 
   initSlider(): void {
